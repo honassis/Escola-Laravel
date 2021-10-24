@@ -7,5 +7,10 @@ Laravel Versão 8.67.0
 
 PHP 7.4.19
 
+utilize o comando para popular o banco para testes
+
+`php artisan db:seed --class=SchoolSeeder`
+
 _InsomniaReqs.json_ para testar a API do projeto.
+
 

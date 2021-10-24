@@ -21,10 +21,11 @@ class CreateClassesTable extends Migration
                 $table->string('serie');
                 $table->char('turn');
                 $table->timestamps();
-                $table->foreign('school_id')->references('id')
-                ->on('schools')->onUpdate('cascade')
-                ->onDelete('cascade');
+               $table->bigInteger('school_id');
+
+               
             });
+            
         }
         
     }

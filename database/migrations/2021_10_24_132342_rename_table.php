@@ -15,7 +15,7 @@ class RenameTable extends Migration
     {
      //   Schema::rename('escolas', 'schools');
 //Schema::rename('turmas', 'classes');
-        Schema::rename('alunos', 'students');
+     //   Schema::rename('alunos', 'students');
 
     }
 

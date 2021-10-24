@@ -13,6 +13,7 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable('students')){
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -23,7 +24,7 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
         });
     }
-
+    }
     /**
      * Reverse the migrations.
      *
@@ -33,4 +34,5 @@ class CreateStudentsTable extends Migration
     {
         Schema::dropIfExists('students');
     }
+
 }
