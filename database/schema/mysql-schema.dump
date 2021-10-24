@@ -4,21 +4,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `alunos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `alunos` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `birthday` date NOT NULL,
-  `genre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `classes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -28,9 +13,9 @@ CREATE TABLE `classes` (
   `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `serie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `turn` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `school_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `school_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,6 +84,33 @@ CREATE TABLE `schools` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `students`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `students` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` date NOT NULL,
+  `genre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `students_classes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `students_classes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` bigint(20) NOT NULL,
+  `classes_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -122,10 +134,15 @@ CREATE TABLE `users` (
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-INSERT INTO `migrations` VALUES (44,'2014_10_12_000000_create_users_table',1);
-INSERT INTO `migrations` VALUES (45,'2014_10_12_100000_create_password_resets_table',1);
-INSERT INTO `migrations` VALUES (46,'2019_08_19_000000_create_failed_jobs_table',1);
-INSERT INTO `migrations` VALUES (47,'2019_12_14_000001_create_personal_access_tokens_table',1);
 INSERT INTO `migrations` VALUES (48,'2021_10_23_190324_create_alunos_table',1);
 INSERT INTO `migrations` VALUES (49,'2021_10_24_043606_create_turmas_table',2);
 INSERT INTO `migrations` VALUES (50,'2021_10_24_051225_create_escolas_table',2);
+INSERT INTO `migrations` VALUES (414,'2014_10_12_000000_create_users_table',3);
+INSERT INTO `migrations` VALUES (415,'2014_10_12_100000_create_password_resets_table',3);
+INSERT INTO `migrations` VALUES (416,'2019_08_19_000000_create_failed_jobs_table',3);
+INSERT INTO `migrations` VALUES (417,'2019_12_14_000001_create_personal_access_tokens_table',3);
+INSERT INTO `migrations` VALUES (418,'2021_10_23_190324_create_students_table',3);
+INSERT INTO `migrations` VALUES (419,'2021_10_24_043606_create_classes_table',3);
+INSERT INTO `migrations` VALUES (420,'2021_10_24_051225_create_schools_table',3);
+INSERT INTO `migrations` VALUES (421,'2021_10_24_132342_rename_table',3);
+INSERT INTO `migrations` VALUES (422,'2021_10_24_154736_create_students_classes_table',3);
