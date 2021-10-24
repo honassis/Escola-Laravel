@@ -4,9 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Alunos;
+use App\Models\Turmas;
 
-class AlunosController extends Controller
+class TurmasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        return Alunos::all();
+        return Turmas::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class AlunosController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -36,7 +36,7 @@ class AlunosController extends Controller
      */
     public function store(Request $request)
     {
-        Alunos::create($request->all());
+        Turmas::create($request->all());
     }
 
     /**
@@ -47,7 +47,8 @@ class AlunosController extends Controller
      */
     public function show($id)
     {
-        return Alunos::findOrFail($id);
+        return Turmas::findOrFail($id);
+
     }
 
     /**
@@ -70,8 +71,8 @@ class AlunosController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $alunos = Alunos::findOrFail($id);
-       $alunos->update($request->all());
+        $turmas = Turmas::findOrFail($id);
+        $turmas->update($request->all());
     }
 
     /**
