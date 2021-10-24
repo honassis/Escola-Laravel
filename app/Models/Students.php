@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Turmas extends Model
+class Students extends Model
 {
     protected $fillable = [
-        'year',
-        'level',
-        'serie',
-        'turn',
-        'school_id',
+        'name',
+        'email',
+        'tel',
+        'birthday',
+        'genre',
     ];
+
     use HasFactory;
 }

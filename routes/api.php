@@ -1,5 +1,5 @@
 <?php
 
-Route::apiResource('alunos', 'App\Http\Controllers\Api\AlunosController');
-Route::apiResource('turmas', 'App\Http\Controllers\Api\TurmasController');
-Route::apiResource('escolas', 'App\Http\Controllers\Api\EscolasController');
+Route::apiResource('students', 'App\Http\Controllers\Api\StudentsController');
+Route::apiResource('classes', 'App\Http\Controllers\Api\ClassesController');
+Route::apiResource('schools', 'App\Http\Controllers\Api\SchoolsController');

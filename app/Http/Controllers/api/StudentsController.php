@@ -4,9 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Escolas;
+use App\Models\Students;
 
-class EscolasController extends Controller
+class StudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class EscolasController extends Controller
      */
     public function index()
     {
-        return Escolas::all();
-
+        return Students::all();
     }
 
     /**
@@ -26,7 +25,7 @@ class EscolasController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +36,7 @@ class EscolasController extends Controller
      */
     public function store(Request $request)
     {
-        Escolas::create($request->all());
+        Students::create($request->all());
     }
 
     /**
@@ -48,7 +47,7 @@ class EscolasController extends Controller
      */
     public function show($id)
     {
-        return Escolas::findOrFail($id);
+        return Students::findOrFail($id);
     }
 
     /**
@@ -71,8 +70,8 @@ class EscolasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $escolas = Escolas::findOrFail($id);
-        $escolas->update($request->all());
+       $students = Students::findOrFail($id);
+       $students->update($request->all());
     }
 
     /**

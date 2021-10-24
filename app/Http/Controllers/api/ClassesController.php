@@ -4,9 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Turmas;
+use App\Models\Classes;
 
-class TurmasController extends Controller
+class ClassesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TurmasController extends Controller
      */
     public function index()
     {
-        return Turmas::all();
+        return Classes::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class TurmasController extends Controller
      */
     public function store(Request $request)
     {
-        Turmas::create($request->all());
+        Classes::create($request->all());
     }
 
     /**
@@ -47,8 +47,8 @@ class TurmasController extends Controller
      */
     public function show($id)
     {
-        return Turmas::findOrFail($id)->join('escolas', 
-        'school_id', '=', 'escolas.id')->select('turmas.*', 'escolas.name as school_name')->get();
+        return Classes::findOrFail($id)->join('schools', 
+        'school_id', '=', 'schools.id')->select('classes.*', 'schools.name as school_name')->get();
         
 
     }
@@ -73,8 +73,8 @@ class TurmasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $turmas = Turmas::findOrFail($id);
-        $turmas->update($request->all());
+        $classes = Classes::findOrFail($id);
+        $classes->update($request->all());
     }
 
     /**
