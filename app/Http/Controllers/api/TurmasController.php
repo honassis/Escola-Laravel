@@ -47,7 +47,9 @@ class TurmasController extends Controller
      */
     public function show($id)
     {
-        return Turmas::findOrFail($id);
+        return Turmas::findOrFail($id)->join('escolas', 
+        'school_id', '=', 'escolas.id')->select('turmas.*', 'escolas.name as school_name')->get();
+        
 
     }
 

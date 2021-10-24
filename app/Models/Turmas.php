@@ -12,7 +12,7 @@ class Turmas extends Model
         'level',
         'serie',
         'turn',
-        'escola',
+        'school_id',
     ];
     use HasFactory;
 }

@@ -18,6 +18,8 @@ class CreateEscolasTable extends Migration
             $table->string('name');
             $table->string('adress');
             $table->timestamps();
+            
+
         });
     }
 
