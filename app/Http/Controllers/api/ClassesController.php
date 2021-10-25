@@ -3,88 +3,48 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Classes;
+use Illuminate\Http\Request;
 
-class ClassesController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return Classes::all();
-    }
+class ClassesController extends Controller {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+ public function index() {
+  return Classes::all();
+ }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        Classes::create($request->all());
-    }
+ public function create() {
+  //
+ }
+ public function rules() {
+  return [
+   'year'      => 'required',
+   'level'     => 'required',
+   'serie'     => 'required',
+   'turn'      => 'required',
+   'school_id' => 'required',
+  ];
+ }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return Classes::findOrFail($id)->join('schools', 
-        'school_id', '=', 'schools.id')->select('classes.*', 'schools.name as school_name')->get();
-        
+ public function store(Request $request) {
 
-    }
+  $validator = \Validator::make($request->all(), $this->rules());
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+  if (!$validator->fails()) {
+   Classes::create($request->all());
+  } else {
+   return response()->json($validator->errors(), 422);
+  }
+ }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $classes = Classes::findOrFail($id);
-        $classes->update($request->all());
-    }
+ public function show($id) {
+  return Classes::findOrFail($id)->join('schools',
+   'school_id', '=', 'schools.id')->select('classes.*', 'schools.name as school_name')->get();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+ }
+
+ public function update(Request $request, $id) {
+  $classes = Classes::findOrFail($id);
+  $classes->update($request->all());
+ }
+
 }
