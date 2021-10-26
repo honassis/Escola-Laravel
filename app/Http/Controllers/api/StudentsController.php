@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\api;
+
 use App\Http\Controllers\Controller;
 use App\Models\Students;
 use App\Models\StudentsClasses;
@@ -13,10 +14,7 @@ class StudentsController extends Controller {
  }
 
  public function create() {
-  $students = Students::all();
-  $classes  = ClassesController::index();
-  return view('create.students',
-   ['students' => $students, 'classis' => $classes]);
+
  }
  public function rules() {
   return [
@@ -28,11 +26,7 @@ class StudentsController extends Controller {
    'classes_id' => 'required',
   ];
  }
- public function storePost(Request $request) {
-  if (self::store($request)) {
-   return redirect()->route('view_student');
-  }
- }
+
  public function store(Request $request) {
   $validator = \Validator::make($request->all(), $this->rules());
 
@@ -47,7 +41,6 @@ class StudentsController extends Controller {
     'student_id' => $student->id,
     'classes_id' => $request->input('classes_id'),
    ]);
-   return true;
   } else {
    return response()->json($validator->errors(), 422);
   }

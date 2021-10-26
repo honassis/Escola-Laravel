@@ -5,13 +5,11 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Classes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ClassesController extends Controller {
 
  public function index() {
-  return DB::table('classes')->select('classes.*', 'schools.name as school_name')->join('schools',
-   'classes.school_id', '=', 'schools.id')->get();
+  return Classes::all();
  }
 
  public function create() {
