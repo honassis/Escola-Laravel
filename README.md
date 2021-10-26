@@ -7,6 +7,15 @@ Laravel Versão 8.67.0
 
 PHP 7.4.19
 
+utilizar o comando pra instalar dependencias
+
+`composer install`
+
+`npm install`
+
+adapte o arquivo .env , a sua realidade de SQL
+
+
 utilize o comando para popular o banco para testes
 
 `php artisan db:seed --class=SchoolSeeder`
